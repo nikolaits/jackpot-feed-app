@@ -1,10 +1,12 @@
 <template>
   <div class="main_view">
-    <!-- <h1>SuperDropComponent</h1> -->
-    <p>
-      {{item.currency}}
-      <animated-number :value="item.amount" :formatValue="formatToPrice" :duration="2000" />
-    </p>
+    <div class="header" :style="{ backgroundImage: 'url(' + require('@/assets/1.png') + ')' }"></div>
+    <div class="body">
+      <p>
+        {{item.currency}}
+        <animated-number :value="item.amount" :formatValue="formatToPrice" :duration="2000" />
+      </p>
+    </div>
   </div>
 </template>
 <script>
@@ -31,9 +33,4 @@ export default {
 };
 </script>
 <style>
-    /* .main_view{
-        width: 100%;
-        background-color: none;
-        word-wrap: break-word;
-    } */
 </style>
