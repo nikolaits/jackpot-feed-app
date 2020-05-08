@@ -1,50 +1,23 @@
 <template>
   <v-container class="main_container" :style="{ backgroundImage: 'url(' + require('@/assets/bg.png') + ')' }">
-    <!-- <v-row class="text-center" >
-      <div class="main_">
-      </div> -->
-     
-    <!-- </v-row> -->
-    <!-- <v-layout row wrap>
-        <v-flex d-flex xs6 style="background:red;">
-        </v-flex>
-        <v-flex d-flex xs6>
-        </v-flex>
-    </v-layout> -->
-
-    <v-row class="first_row" >
-      <li v-for="(item,index) in $store.getters.getPots" :key="index">
-        <!-- <animated-number
-          :value="$store.getters.getPots[index]?$store.getters.getPots[index].amount:0"
-          :formatValue="formatToPrice"
-          :duration="2000"
-        /> -->
-        <animated-number
-          :value="item.amount"
-          :formatValue="formatToPrice"
-          :duration="2000"
-        />
-      </li>
+    <v-row v-for="(item,index) in $store.getters.getPots" :key="index">
+        <DailyDropComponent v-if="item.imageType == 'daily_drop'" :item ="item"/>
+        <SuperDropComponent v-if="item.imageType == 'super_drop'" :item ="item"/>
+        <HourlyDropComponent v-if="item.imageType == 'hourly_drop'" :item ="item"/>
     </v-row>
-    <v-row class="second_row" >
-    </v-row>
-    <v-row class="third_row" >
-    </v-row>
+    
   </v-container>
 </template>
 <script>
-import AnimatedNumber from "animated-number-vue";
-import accountingjs from "accounting-js"
+import DailyDropComponent from "./DailyDropComponent";
+import SuperDropComponent from "./SuperDropComponent";
+import HourlyDropComponent from "./HourlyDropComponent";
 export default {
   name: "MainComponent",
   components: {
-    AnimatedNumber
-  },
-  data: () => ({}),
-  methods: {
-    formatToPrice(value) {
-      return accountingjs.formatMoney(value, { symbol: "$", precision: 2, thousand: ",", decimal: "." });
-    }
+    DailyDropComponent,
+    SuperDropComponent,
+    HourlyDropComponent
   },
   mounted() {
     this.$store.dispatch('getData')
@@ -70,19 +43,31 @@ div.container{
   width:20%;
   padding:0;
 }
-.main_container div:nth-child(1){
+.main_container .row:nth-child(1){
+  position: relative;
   height: 60%;
   margin: 0;
   background-color: red;
 }
-.main_container div:nth-child(2){
+.main_container .row:nth-child(2){
   height: 20%;
   margin: 0;
   background-color: green;
 }
-.main_container div:nth-child(3){
+.main_container .row:nth-child(3){
   height: 20%;
   margin: 0;
   background-color: yellow;
+}
+.main_view{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    word-wrap: break-word;
+}
+.main_view p{
+  background-color: transparent;
 }
 </style>
