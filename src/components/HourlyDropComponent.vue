@@ -1,6 +1,6 @@
 <template>
-  <v-img class="hourlyViewImage pa-2 ma-0" contain :src="require('@/assets/stars.png')">
-    <v-container class="hourlyView ma-0 pa-0">
+  <v-img class="hourlyViewImage pa-2 ma-0" position="center top" contain="true" :src="require('@/assets/stars.png')">
+    <v-container class="hourlyView ma-0 pt-0 pb-0 pl-1 pr-1">
       <v-row class="pa-0 ma-0">
         <v-col class="ma-0 ps-0 pe-0" cols="5">
           <v-img
@@ -14,9 +14,13 @@
           ></v-img>
         </v-col>
         <v-col cols="7" class="d-flex flex-column justify-md-center">
-          <p class="amount pa-0 ma-0">
+          <p v-if="!isTimeoutEnded" class="amount pa-0 ma-0">
             {{item.currency}}
             <animated-number :value="item.amount" :formatValue="formatToPrice" :duration="2000" />
+          </p>
+          <p v-if="isTimeoutEnded" class="amount pa-0 ma-0">
+            {{item.currency}}
+            {{endAmount}}
           </p>
           <p class="countdown">
             <span>
@@ -31,7 +35,7 @@
                 :start-label="''"
                 :end-label="''"
                 label-position="begin"
-                :end-text="'00: 00: 00'"
+                :end-text="'00:00:00'"
                 :day-txt="null"
                 :hour-txt="':'"
                 :minutes-txt="':'"
@@ -96,45 +100,20 @@ export default {
   position: relative;
   height: 100%;
 }
-.hourlyView {
-  position: relative;
-  height: 100%;
-  width: 100%;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(42, 51, 100, 0) 0%,
-    rgba(42, 51, 100, 0.25) 80%,
-    rgba(42, 51, 100, 0.55) 100%
-  );
-}
 .hourlyView .row {
   height: 100%;
 }
 .hourlyView .amount {
-  font-size: 1.4em;
+  font-size: 1.6vw;
 }
 .hourlyView .countdown {
   display: inline-block;
 }
-.hourlyView .countdown,
-.hourlyView .countdown i {
-  font-family: "Open Sans Condensed", sans-serif;
-
-  font-weight: 700;
-  color: white;
-}
 .hourlyView .countdown {
-  font-size: 0.7em;
+  font-size: 0.7vw;
 }
 .hourlyView .countdown i {
-  font-size: 0.9em;
+  font-size: 0.9vw;
 }
-.hourlyView .countdown span {
-  background-color: black;
-  border-radius: 30px;
-  padding: 1% 5%;
-}
-.hourlyView .countdown div {
-  display: inline-block !important;
-}
+
 </style>

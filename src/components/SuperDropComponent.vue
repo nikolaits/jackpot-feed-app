@@ -1,6 +1,6 @@
 <template>
-  <v-img class="superViewImage pa-2 ma-0" contain :src="require('@/assets/stars.png')">
-    <v-container class="superView ma-0 pa-0">
+  <v-img class="superViewImage pa-2 ma-0" position="center top" contain="true" :src="require('@/assets/stars.png')">
+    <v-container class="superView ma-0 pt-0 pb-0 pl-1 pr-1">
       <v-row class="pa-0 ma-0">
         <v-col class="ma-0 ps-0 pe-0" cols="5">
           <v-img
@@ -51,21 +51,10 @@ export default {
   position: relative;
   height: 100%;
 }
-.superView {
-  position: relative;
-  height: 100%;
-  width: 100%;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(42, 51, 100, 0) 0%,
-    rgba(42, 51, 100, 0.25) 80%,
-    rgba(42, 51, 100, 0.55) 100%
-  );
-}
 .superView .row {
   height: 100%;
 }
 .superView .amount {
-  font-size: 1.4em;
+  font-size: 1.5vw;
 }
 </style>

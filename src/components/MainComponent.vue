@@ -59,6 +59,9 @@ div#main_container {
   font-family: 'Lato', sans-serif;
   font-weight: 900;
 }
+.countdown div{
+  color:rgb(246, 249, 205);
+}
 #main_container > .row:nth-child(1) {
   position: relative;
   height: 60%;
@@ -69,15 +72,31 @@ div#main_container {
 #main_container > .row:nth-child(3) {
   height: 20%;
 }
-/* .main_view {
-  position: relative;
-  display: block;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  background-color: transparent;
+#main_container .countdown div {
+  display: inline-block !important;
 }
-.main_view p {
-  background-color: transparent;
-} */
+#main_container .countdown span {
+  background-color: black;
+  border-radius: 30px;
+  padding: 1% 5%;
+}
+#main_container .countdown,
+#main_container .countdown i {
+  font-family: "Open Sans Condensed", sans-serif;
+  font-weight: 700;
+  color: white;
+}
+.dailyView, .hourlyView,.superView{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(42, 51, 100, 0.1) 0%,
+    rgba(42, 51, 100, 0.30) 70%,
+    rgba(42, 51, 100, 0.45) 80%,
+    rgba(42, 51, 100, 0.85) 90%,
+    rgba(42, 51, 100, 1.0) 100%
+  );
+}
 </style>

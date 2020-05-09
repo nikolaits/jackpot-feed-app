@@ -1,5 +1,7 @@
 # jackpot-feed-app
 
+## [DEMO](https://nikolaits.github.io/jackpot-feed-app/index.html)
+
 ## Project setup
 ```
 npm install

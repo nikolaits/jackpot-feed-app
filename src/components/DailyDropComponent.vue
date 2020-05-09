@@ -1,66 +1,65 @@
 <template>
-  <!-- <v-container class="fill-height ma-0 pa-0"> -->
-    <!-- <v-row class="header" :style="{ 'background-image': 'url(' + require('@/assets/1.png') + ')' }">
-    </v-row>-->
-    <!-- <v-row class="header" style="height:60%">
-      <v-img :contain="true" aspect-ratio="1.7" :src="require('@/assets/1.png')"></v-img>
-    </v-row>
-    <v-row class="body" >
-      <v-img class="text-md-center" :src="require('@/assets/box.png')" contain>
-        <p v-if="!isTimeoutEnded" >
-        {{item.currency}}
-        <animated-number :value="item.amount" :formatValue="formatToPrice" :duration="2000" />
-        </p> -->
-        <!-- <p v-if="isTimeoutEnded" class="text-md-center">
-          {{item.currency}}
-          {{endAmount}}
-        </p> -->
-      <!-- </v-img>
-    </v-row>
-  </v-container> -->
-  <!-- <div class="header" ></div> -->
-  <!-- <div class="body">-->
-
-  <!-- </div>
-    <div class="footer">
-      <vue-countdown-timer
-        v-if="showCountdown"
-        @end_callback="endCallBack('event ended')"
-        :start-time="'2020-5-8 00:00:00'"
-        :end-time="endTime"
-        :interval="1000"
-        :start-label="''"
-        :end-label="''"
-        label-position="begin"
-        :end-text="'00: 00: 00'"
-        :day-txt="null"
-        :hour-txt="':'"
-        :minutes-txt="':'"
-        :seconds-txt="''"
-      >
-        <template slot="countdown" slot-scope="scope">
-          <span>{{scope.props.hours}}</span>
-          {{scope.props.hourTxt}}
-          <span>{{scope.props.minutes}}</span>
-          {{scope.props.minutesTxt}}
-          <span>{{scope.props.seconds}}</span>
-          {{scope.props.secondsTxt}}
-        </template>
-      </vue-countdown-timer>
-  </div>-->
-  <v-container class="dailyView ma-0 pa-0">
-      <v-row class="pa-0 ma-0">
-      </v-row>
+  <v-container class="ma-0 pa-2">
+      <v-container class="dailyView ma-0 pa-0">
+        <v-row class="pa-0 ma-0">
+          <v-img class="dailyViewImage pa-0 ma-0" contain :src="require('@/assets/1.png')">
+          </v-img>
+        </v-row>
+        <v-row class="pa-0 ma-0">
+          <v-img class="dailyViewImage pa-0 ma-0" contain :src="require('@/assets/box.png')">
+          <v-col cols="12" class="d-flex justify-md-center align-md-center ma-0 pa-0">
+             <p v-if="!isTimeoutEnded" class="amount pa-0 ma-0">
+              {{item.currency}}
+              <animated-number :value="item.amount" :formatValue="formatToPrice" :duration="2000" />
+            </p>
+            <p v-if="isTimeoutEnded" class="amount pa-0 ma-0">
+              {{item.currency}}
+              {{endAmount}}
+            </p>
+          </v-col>
+          </v-img>
+        </v-row>
+        <v-row class="pa-0 ma-0">
+          <v-col cols="12" class="d-flex justify-md-center align-md-center mt-7 mb-7 pa-0" >
+          <p class="countdown text-md-center ma-0">
+            <span>
+              Must Drop In
+              <v-icon class="ml-1 mr-1" dark>mdi-clock</v-icon>
+              <vue-countdown-timer
+                v-if="showCountdown"
+                @end_callback="endCallBack('event ended')"
+                :start-time="'2020-5-8 00:00:00'"
+                :end-time="endTime"
+                :interval="1000"
+                :start-label="''"
+                :end-label="''"
+                label-position="begin"
+                :end-text="'00:00:00'"
+                :day-txt="null"
+                :hour-txt="':'"
+                :minutes-txt="':'"
+                :seconds-txt="''"
+              >
+                <template
+                  slot="countdown"
+                  slot-scope="scope"
+                >{{scope.props.hours}}{{scope.props.hourTxt}}{{scope.props.minutes}}{{scope.props.minutesTxt}}{{scope.props.seconds}}{{scope.props.secondsTxt}}</template>
+              </vue-countdown-timer>
+            </span>
+          </p>
+          </v-col>
+        </v-row>
+    </v-container>
   </v-container>
 </template>
 <script>
-// import AnimatedNumber from "animated-number-vue";
+import AnimatedNumber from "animated-number-vue";
 import accountingjs from "accounting-js";
 import { getEndDate } from "../_helper";
 export default {
   name: "DailyDropComponent",
   components: {
-    // AnimatedNumber
+    AnimatedNumber
   },
   props: {
     item: {}
@@ -96,33 +95,24 @@ export default {
 };
 </script>
 <style>
-/* .row .header {
+.dailyViewImage{
   position: relative;
-  height: 50%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-.row .body {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 20%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  color: gold;
-  font-size: 2em;
-}
-
-.row .body p{
   height: 100%;
-} */
-.row .header {
-  background-color: yellow;
 }
-.row .body {
-  background-color:   rebeccapurple;
+.dailyView .col-12{
+  height: 100%;
+}
+.dailyView .amount {
+  font-size: 2.6vw;
+}
+.dailyView .countdown {
+  display: inline-block;
+  width: 100%;
+}
+.dailyView .countdown {
+  font-size: 0.9vw;
+}
+.dailyView .countdown i {
+  font-size: 1vw;
 }
 </style>
