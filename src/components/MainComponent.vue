@@ -43,7 +43,6 @@ div#main_container {
   height: 100%;
   min-width: 150px;
   max-width: 300px;
-  width: 20%;
   padding: 0;
 }
 #main_container .amount{
@@ -98,5 +97,16 @@ div#main_container {
     rgba(42, 51, 100, 0.85) 90%,
     rgba(42, 51, 100, 1.0) 100%
   );
+}
+@media (max-width: 960px) {
+  #main_container .amount {
+    font-size: 4.6vw;
+  }
+  #main_container .countdown {
+    font-size: 2.5vw;
+  }
+  #main_container .countdown i {
+    font-size: 2.8vw;
+  }
 }
 </style>

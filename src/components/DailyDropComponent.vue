@@ -2,12 +2,12 @@
   <v-container class="ma-0 pa-2">
       <v-container class="dailyView ma-0 pa-0">
         <v-row class="pa-0 ma-0">
-          <v-img class="dailyViewImage pa-0 ma-0" contain :src="require('@/assets/1.png')">
+          <v-img class="dailyViewImage pa-0 ma-0" :contain="contain" :src="require('@/assets/1.png')">
           </v-img>
         </v-row>
         <v-row class="pa-0 ma-0">
-          <v-img class="dailyViewImage pa-0 ma-0" contain :src="require('@/assets/box.png')">
-          <v-col cols="12" class="d-flex justify-md-center align-md-center ma-0 pa-0">
+          <v-img class="dailyViewImage pa-0 ma-0" :contain="contain" :src="require('@/assets/box.png')">
+          <v-col cols="12" class="d-flex justify-center align-center ma-0 pa-0">
              <p v-if="!isTimeoutEnded" class="amount pa-0 ma-0">
               {{item.currency}}
               <animated-number :value="item.amount" :formatValue="formatToPrice" :duration="2000" />
@@ -20,8 +20,8 @@
           </v-img>
         </v-row>
         <v-row class="pa-0 ma-0">
-          <v-col cols="12" class="d-flex justify-md-center align-md-center mt-7 mb-7 pa-0" >
-          <p class="countdown text-md-center ma-0">
+          <v-col cols="12" class="d-flex justify-center align-center mt-7 mb-7 pa-0" >
+          <p class="countdown text-center ma-0">
             <span>
               Must Drop In
               <v-icon class="ml-1 mr-1" dark>mdi-clock</v-icon>
@@ -69,7 +69,8 @@ export default {
       isTimeoutEnded: false,
       endAmount: "",
       endTime: "2020-5-8 19:35:00",
-      showCountdown: false
+      showCountdown: false,
+      contain:true
     };
   },
   methods: {

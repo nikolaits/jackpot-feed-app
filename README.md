@@ -1,6 +1,6 @@
 # jackpot-feed-app
 
-## [DEMO](https://nikolaits.github.io/jackpot-feed-app/index.html)
+## [DEMO](https://nikolaits.github.io/jackpot-feed-app/)
 
 ## Project setup
 ```

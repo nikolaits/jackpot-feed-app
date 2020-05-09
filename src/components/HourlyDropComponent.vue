@@ -1,5 +1,5 @@
 <template>
-  <v-img class="hourlyViewImage pa-2 ma-0" position="center top" contain="true" :src="require('@/assets/stars.png')">
+  <v-img class="hourlyViewImage pa-2 ma-0" position="center top" :contain="contain" :src="require('@/assets/stars.png')">
     <v-container class="hourlyView ma-0 pt-0 pb-0 pl-1 pr-1">
       <v-row class="pa-0 ma-0">
         <v-col class="ma-0 ps-0 pe-0" cols="5">
@@ -7,13 +7,13 @@
             class
             height="100%"
             width="100%"
-            :contain="true"
+            :contain="contain"
             aspect-ratio="1.7"
             position="center center"
             :src="require('@/assets/3.png')"
           ></v-img>
         </v-col>
-        <v-col cols="7" class="d-flex flex-column justify-md-center">
+        <v-col cols="7" class="d-flex flex-column justify-center">
           <p v-if="!isTimeoutEnded" class="amount pa-0 ma-0">
             {{item.currency}}
             <animated-number :value="item.amount" :formatValue="formatToPrice" :duration="2000" />
@@ -70,7 +70,8 @@ export default {
       isTimeoutEnded: false,
       endAmount: "",
       endTime: "2020-5-8 19:35:00",
-      showCountdown: false
+      showCountdown: false,
+      contain:true
     };
   },
   methods: {
