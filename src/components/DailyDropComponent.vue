@@ -1,16 +1,27 @@
 <template>
-  <div class="main_view">
-    <div class="header" :style="{ backgroundImage: 'url(' + require('@/assets/1.png') + ')' }"></div>
-    <div class="body">
-      <p v-if="!isTimeoutEnded">
+  <!-- <v-container class="fill-height ma-0 pa-0"> -->
+    <!-- <v-row class="header" :style="{ 'background-image': 'url(' + require('@/assets/1.png') + ')' }">
+    </v-row>-->
+    <!-- <v-row class="header" style="height:60%">
+      <v-img :contain="true" aspect-ratio="1.7" :src="require('@/assets/1.png')"></v-img>
+    </v-row>
+    <v-row class="body" >
+      <v-img class="text-md-center" :src="require('@/assets/box.png')" contain>
+        <p v-if="!isTimeoutEnded" >
         {{item.currency}}
         <animated-number :value="item.amount" :formatValue="formatToPrice" :duration="2000" />
-      </p>
-      <p v-if="isTimeoutEnded">
-        {{item.currency}}
-        {{endAmount}}
-      </p>
-    </div>
+        </p> -->
+        <!-- <p v-if="isTimeoutEnded" class="text-md-center">
+          {{item.currency}}
+          {{endAmount}}
+        </p> -->
+      <!-- </v-img>
+    </v-row>
+  </v-container> -->
+  <!-- <div class="header" ></div> -->
+  <!-- <div class="body">-->
+
+  <!-- </div>
     <div class="footer">
       <vue-countdown-timer
         v-if="showCountdown"
@@ -36,17 +47,20 @@
           {{scope.props.secondsTxt}}
         </template>
       </vue-countdown-timer>
-    </div>
-  </div>
+  </div>-->
+  <v-container class="dailyView ma-0 pa-0">
+      <v-row class="pa-0 ma-0">
+      </v-row>
+  </v-container>
 </template>
 <script>
-import AnimatedNumber from "animated-number-vue";
+// import AnimatedNumber from "animated-number-vue";
 import accountingjs from "accounting-js";
 import { getEndDate } from "../_helper";
 export default {
   name: "DailyDropComponent",
   components: {
-    AnimatedNumber
+    // AnimatedNumber
   },
   props: {
     item: {}
@@ -82,20 +96,33 @@ export default {
 };
 </script>
 <style>
-/* .header{
-    height: 60%;
-    width: 100%;
-    background-repeat: no-repeat;
-    background-position:  center center;
-      background-attachment: fixed;
-     -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+/* .row .header {
+  position: relative;
+  height: 50%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
-.body{
-    height: 20%;
-    width: 100%;
-    object-fit: cover;
+.row .body {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  color: gold;
+  font-size: 2em;
+}
+
+.row .body p{
+  height: 100%;
 } */
+.row .header {
+  background-color: yellow;
+}
+.row .body {
+  background-color:   rebeccapurple;
+}
 </style>

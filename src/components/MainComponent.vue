@@ -1,9 +1,9 @@
 <template>
   <v-container
-    class="main_container"
+    id="main_container"
     :style="{ backgroundImage: 'url(' + require('@/assets/bg.png') + ')' }"
   >
-    <v-row v-for="(item,index) in $store.getters.getPots" :key="index">
+    <v-row v-for="(item,index) in $store.getters.getPots" :key="index" class="ma-0 pa-0">
       <DailyDropComponent v-if="item.imageType == 'daily_drop'" :item="item" />
       <SuperDropComponent v-if="item.imageType == 'super_drop'" :item="item" />
       <HourlyDropComponent v-if="item.imageType == 'hourly_drop'" :item="item" />
@@ -36,7 +36,7 @@ export default {
 };
 </script>
 <style>
-div.container {
+div#main_container {
   position: relative;
   background-color: green;
   min-height: 320px;
@@ -46,31 +46,38 @@ div.container {
   width: 20%;
   padding: 0;
 }
-.main_container .row:nth-child(1) {
+#main_container .amount{
+  background-color: rgb(167, 127, 26);
+  background-image: linear-gradient(#F1F699, #CCAF3B);
+  background-size: 100%;
+  background-repeat: repeat;
+   -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+
+  font-family: 'Lato', sans-serif;
+  font-weight: 900;
+}
+#main_container > .row:nth-child(1) {
   position: relative;
   height: 60%;
-  margin: 0;
-  background-color: red;
 }
-.main_container .row:nth-child(2) {
+#main_container > .row:nth-child(2) {
   height: 20%;
-  margin: 0;
-  background-color: green;
 }
-.main_container .row:nth-child(3) {
+#main_container > .row:nth-child(3) {
   height: 20%;
-  margin: 0;
-  background-color: yellow;
 }
-.main_view {
+/* .main_view {
   position: relative;
   display: block;
+  padding: 0;
   width: 100%;
   height: 100%;
   background-color: transparent;
-  word-wrap: break-word;
 }
 .main_view p {
   background-color: transparent;
-}
+} */
 </style>

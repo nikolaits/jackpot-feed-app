@@ -1,43 +1,53 @@
 <template>
-  <div class="main_view">
-    <div class="header" :style="{ backgroundImage: 'url(' + require('@/assets/1.png') + ')' }"></div>
-    <div class="body">
-      <p v-if="!isTimeoutEnded">
-        {{item.currency}}
-        <animated-number :value="item.amount" :formatValue="formatToPrice" :duration="2000" />
-      </p>
-      <p v-if="isTimeoutEnded">
-        {{item.currency}}
-        {{endAmount}}
-      </p>
-    </div>
-    <div class="footer">
-      <vue-countdown-timer
-        v-if="showCountdown"
-        @end_callback="endCallBack('event ended')"
-        :start-time="'2020-5-8 00:00:00'"
-        :end-time="endTime"
-        :interval="1000"
-        :start-label="''"
-        :end-label="''"
-        label-position="begin"
-        :end-text="'00: 00: 00'"
-        :day-txt="null"
-        :hour-txt="':'"
-        :minutes-txt="':'"
-        :seconds-txt="''"
-      >
-        <template slot="countdown" slot-scope="scope">
-          <span>{{scope.props.hours}}</span>
-          {{scope.props.hourTxt}}
-          <span>{{scope.props.minutes}}</span>
-          {{scope.props.minutesTxt}}
-          <span>{{scope.props.seconds}}</span>
-          {{scope.props.secondsTxt}}
-        </template>
-      </vue-countdown-timer>
-    </div>
-  </div>
+  <v-img class="hourlyViewImage pa-2 ma-0" contain :src="require('@/assets/stars.png')">
+    <v-container class="hourlyView ma-0 pa-0">
+      <v-row class="pa-0 ma-0">
+        <v-col class="ma-0 ps-0 pe-0" cols="5">
+          <v-img
+            class
+            height="100%"
+            width="100%"
+            :contain="true"
+            aspect-ratio="1.7"
+            position="center center"
+            :src="require('@/assets/3.png')"
+          ></v-img>
+        </v-col>
+        <v-col cols="7" class="d-flex flex-column justify-md-center">
+          <p class="amount pa-0 ma-0">
+            {{item.currency}}
+            <animated-number :value="item.amount" :formatValue="formatToPrice" :duration="2000" />
+          </p>
+          <p class="countdown">
+            <span>
+              Must Drop In
+              <v-icon class="ml-1 mr-1" dark>mdi-clock</v-icon>
+              <vue-countdown-timer
+                v-if="showCountdown"
+                @end_callback="endCallBack('event ended')"
+                :start-time="'2020-5-8 00:00:00'"
+                :end-time="endTime"
+                :interval="1000"
+                :start-label="''"
+                :end-label="''"
+                label-position="begin"
+                :end-text="'00: 00: 00'"
+                :day-txt="null"
+                :hour-txt="':'"
+                :minutes-txt="':'"
+                :seconds-txt="''"
+              >
+                <template
+                  slot="countdown"
+                  slot-scope="scope"
+                >{{scope.props.hours}}{{scope.props.hourTxt}}{{scope.props.minutes}}{{scope.props.minutesTxt}}{{scope.props.seconds}}{{scope.props.secondsTxt}}</template>
+              </vue-countdown-timer>
+            </span>
+          </p>
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-img>
 </template>
 <script>
 import AnimatedNumber from "animated-number-vue";
@@ -82,20 +92,49 @@ export default {
 };
 </script>
 <style>
-/* .header{
-    height: 60%;
-    width: 100%;
-    background-repeat: no-repeat;
-    background-position:  center center;
-      background-attachment: fixed;
-     -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+.hourlyViewImage {
+  position: relative;
+  height: 100%;
 }
-.body{
-    height: 20%;
-    width: 100%;
-    object-fit: cover;
-} */
+.hourlyView {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(42, 51, 100, 0) 0%,
+    rgba(42, 51, 100, 0.25) 80%,
+    rgba(42, 51, 100, 0.55) 100%
+  );
+}
+.hourlyView .row {
+  height: 100%;
+}
+.hourlyView .amount {
+  font-size: 1.4em;
+}
+.hourlyView .countdown {
+  display: inline-block;
+}
+.hourlyView .countdown,
+.hourlyView .countdown i {
+  font-family: "Open Sans Condensed", sans-serif;
+
+  font-weight: 700;
+  color: white;
+}
+.hourlyView .countdown {
+  font-size: 0.7em;
+}
+.hourlyView .countdown i {
+  font-size: 0.9em;
+}
+.hourlyView .countdown span {
+  background-color: black;
+  border-radius: 30px;
+  padding: 1% 5%;
+}
+.hourlyView .countdown div {
+  display: inline-block !important;
+}
 </style>
